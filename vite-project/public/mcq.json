@@ -10078,5 +10078,605 @@
     ],
     "answer": "B",
     "explanation": "Executing a privileged instruction in user mode causes a trap."
+  },
+  {
+    "id": 673,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Hard",
+    "question": "There are 5 queues Q1, Q2, Q3, Q4, Q5 arranged from highest priority (Q1) to lowest (Q5), and each queue holds five processes P1–P5. With fixed-priority pre-emptive scheduling where each queue has absolute priority over lower queues, when will the first process (P1) of Q5 be executed?",
+    "options": [
+      "After all processes (P1–P5) of Q1, Q2, Q3 and Q4 have been executed",
+      "After each higher-priority queue has received one time slice in round-robin order",
+      "Immediately, because it is the first process of its own queue",
+      "After only P1 of each higher-priority queue has finished"
+    ],
+    "answer": "A",
+    "explanation": "With absolute priority, a lower queue runs only when every higher-priority queue is completely empty. Any new arrival in a higher queue also pre-empts the running lower-priority process, so Q5's P1 waits for all of Q1–Q4 to finish."
+  },
+  {
+    "id": 674,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Bitwise AND, OR, XOR, NOT",
+    "difficulty": "Medium",
+    "question": "What is printed?\n1 Integer p, q, r\n2 Set p = 6, q = 5, r = 10\n3 if ((p & q & r) < (6 - r - p))\n4     r = (p & q) ^ p\n5 End if\n6 Print p + q + r",
+    "options": [
+      "25",
+      "21",
+      "13",
+      "11"
+    ],
+    "answer": "B",
+    "explanation": "p&q = 0110 & 0101 = 0100 (4); 4 & 1010 = 0. RHS = 6 − 10 − 6 = −10. Since 0 < −10 is false, the block is skipped and r stays 10, so the output is 6 + 5 + 10 = 21."
+  },
+  {
+    "id": 675,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Deadlock and its four conditions",
+    "difficulty": "Hard",
+    "question": "In a cloud-based financial system, resources are allocated by always requesting them in increasing order of their IDs to avoid contention at peak load, yet slowdowns are still seen. Which statement best describes this strategy?",
+    "options": [
+      "It prevents starvation but still allows circular wait",
+      "It does not prevent deadlock, but it reduces contention",
+      "It prevents deadlocks, but may cause underutilization if resources are requested out of order",
+      "It eliminates deadlocks and also guarantees optimal resource utilization"
+    ],
+    "answer": "C",
+    "explanation": "Ordered allocation breaks the circular-wait condition, so deadlock cannot occur. However, a process may have to acquire (and hold) resources it does not need yet just to respect the order, or wait on lower-ID resources, which reduces utilization."
+  },
+  {
+    "id": 676,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Classes, objects, constructors",
+    "difficulty": "Hard",
+    "question": "What happens when this Java program runs?\nclass BookCollection {\n  private List<Book> books;\n  public BookCollection(List<Book> books) {\n    books = books;            // Line A\n  }\n  public void showCollection() {\n    for (Book b : books)\n      System.out.println(\"Book: \" + b.getTitle());\n  }\n}\n// main: list has \"War and Peace\" and \"1984\"\n// new BookCollection(list).showCollection();",
+    "options": [
+      "Prints nothing, as the loop runs zero times",
+      "Compile-time error at Line A",
+      "Prints both book titles",
+      "NullPointerException at runtime when showCollection() iterates over books"
+    ],
+    "answer": "D",
+    "explanation": "At Line A the parameter is assigned to itself (shadowing), so the field this.books is never set and stays null. Iterating over a null reference in the enhanced for loop throws NullPointerException. The fix is this.books = books;"
+  },
+  {
+    "id": 677,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Bitwise AND, OR, XOR, NOT",
+    "difficulty": "Medium",
+    "question": "What is printed?\nInteger a, b, c\nSet a = 12, b = 10, c = 3\nif ((a & b) > (a ^ b))\n    c = a | b\nEnd if\nPrint a + b + c",
+    "options": [
+      "36",
+      "22",
+      "25",
+      "30"
+    ],
+    "answer": "A",
+    "explanation": "a&b = 1100 & 1010 = 1000 (8); a^b = 0110 (6). 8 > 6 is true, so c = a|b = 1110 = 14. Output = 12 + 10 + 14 = 36."
+  },
+  {
+    "id": 678,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Bitwise AND, OR, XOR, NOT",
+    "difficulty": "Hard",
+    "question": "Integer x = 11, y = 6. What does Print (x ^ y) + 2 * (x & y) display?",
+    "options": [
+      "15",
+      "17",
+      "19",
+      "13"
+    ],
+    "answer": "B",
+    "explanation": "x^y = 1011 ^ 0110 = 1101 (13); x&y = 0010 (2). 13 + 2×2 = 17, which equals x + y (XOR is addition without carry; AND gives the carry bits)."
+  },
+  {
+    "id": 679,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Operator precedence and associativity",
+    "difficulty": "Medium",
+    "question": "In C/Java, what does this print?\nint a = 5, b = 3;\nprintf(\"%d\", a + b << 1);",
+    "options": [
+      "11",
+      "10",
+      "16",
+      "8"
+    ],
+    "answer": "C",
+    "explanation": "Additive operators have higher precedence than shift operators, so it is (5 + 3) << 1 = 8 << 1 = 16, not 5 + (3 << 1) = 11."
+  },
+  {
+    "id": 680,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "For, while and do-while loops",
+    "difficulty": "Medium",
+    "question": "What is printed?\nInteger n = 5, s = 0\nWhile n > 0\n    s = s + n\n    n = n - 2\nEnd While\nPrint s",
+    "options": [
+      "8",
+      "5",
+      "15",
+      "9"
+    ],
+    "answer": "D",
+    "explanation": "Iterations: n=5 (s=5), n=3 (s=8), n=1 (s=9), then n becomes −1 and the loop stops. Output is 9."
+  },
+  {
+    "id": 681,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Increment/decrement: pre vs post",
+    "difficulty": "Hard",
+    "question": "What is the output in C/Java?\nint x = 4;\nint y = x++ * 2;\nint z = ++x * 2;\nprintf(\"%d\", y + z + x);",
+    "options": [
+      "26",
+      "28",
+      "22",
+      "24"
+    ],
+    "answer": "A",
+    "explanation": "y = 4×2 = 8 (then x=5). ++x makes x=6, so z = 12. y + z + x = 8 + 12 + 6 = 26."
+  },
+  {
+    "id": 682,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Integer division, modulo and type conversion",
+    "difficulty": "Hard",
+    "question": "In C/Java (integer division truncates toward zero), what is the value of (x / 2) + (x % 2) when x = −7?",
+    "options": [
+      "−5",
+      "−4",
+      "−2",
+      "−3"
+    ],
+    "answer": "B",
+    "explanation": "−7 / 2 = −3 and −7 % 2 = −1 (the remainder takes the sign of the dividend). −3 + (−1) = −4."
+  },
+  {
+    "id": 683,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "If, else-if, nested conditions and switch",
+    "difficulty": "Medium",
+    "question": "What is the output?\nint x = 2;\nswitch (x) {\n  case 1: printf(\"A\");\n  case 2: printf(\"B\");\n  case 3: printf(\"C\"); break;\n  default: printf(\"D\");\n}",
+    "options": [
+      "ABC",
+      "BCD",
+      "BC",
+      "B"
+    ],
+    "answer": "C",
+    "explanation": "Execution starts at case 2 and, with no break, falls through into case 3, which prints C and then breaks. Output is BC."
+  },
+  {
+    "id": 684,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Recursion, base cases and recursive stack",
+    "difficulty": "Medium",
+    "question": "Integer f(Integer n)\n    if n <= 2 then return n\n    return f(n - 1) + f(n - 2)\nEnd\nWhat does Print f(5) display?",
+    "options": [
+      "5",
+      "13",
+      "10",
+      "8"
+    ],
+    "answer": "D",
+    "explanation": "f(1)=1, f(2)=2, f(3)=3, f(4)=5, f(5)=5+3=8."
+  },
+  {
+    "id": 685,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Nested loops and pattern tracing",
+    "difficulty": "Medium",
+    "question": "How many times does the inner statement execute?\nfor i = 1 to 3\n    for j = i to 3\n        count = count + 1",
+    "options": [
+      "6",
+      "3",
+      "5",
+      "9"
+    ],
+    "answer": "A",
+    "explanation": "For i=1 the inner loop runs 3 times, i=2 runs 2 times, i=3 runs 1 time: 3 + 2 + 1 = 6."
+  },
+  {
+    "id": 686,
+    "module": "Module 1 — Pseudocode & Programming Logic",
+    "topic": "Variables, constants and data types",
+    "difficulty": "Hard",
+    "question": "In Java, what is printed?\nint m = Integer.MAX_VALUE;\nm++;\nSystem.out.println(m);",
+    "options": [
+      "2147483647",
+      "−2147483648",
+      "Throws ArithmeticException",
+      "2147483648"
+    ],
+    "answer": "B",
+    "explanation": "int arithmetic overflows silently and wraps around in two's complement, so MAX_VALUE + 1 becomes Integer.MIN_VALUE (−2147483648)."
+  },
+  {
+    "id": 687,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Hard",
+    "question": "Pre-emptive priority scheduling (lower number = higher priority). P1: arrival 0, burst 5, priority 3. P2: arrival 1, burst 3, priority 1. P3: arrival 2, burst 2, priority 2. What is the average waiting time?",
+    "options": [
+      "3.00 ms",
+      "4.00 ms",
+      "2.33 ms",
+      "1.67 ms"
+    ],
+    "answer": "C",
+    "explanation": "Timeline: P1 0–1, P2 1–4, P3 4–6, P1 6–10. Waiting = completion − arrival − burst: P1 = 10−0−5 = 5, P2 = 4−1−3 = 0, P3 = 6−2−2 = 2. Average = 7/3 ≈ 2.33 ms."
+  },
+  {
+    "id": 688,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Medium",
+    "question": "In priority scheduling, low-priority processes may wait indefinitely because higher-priority processes keep arriving. Which technique gradually raises the priority of long-waiting processes to solve this?",
+    "options": [
+      "Thrashing",
+      "Paging",
+      "Context switching",
+      "Aging"
+    ],
+    "answer": "D",
+    "explanation": "Starvation (indefinite blocking) is solved by aging: increasing a process's priority as it waits."
+  },
+  {
+    "id": 689,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Hard",
+    "question": "Round Robin with time quantum = 2 ms. P1, P2, P3 all arrive at 0 with bursts 5, 3 and 1 ms. What is the average waiting time?",
+    "options": [
+      "4.33 ms",
+      "3.67 ms",
+      "5.00 ms",
+      "3.00 ms"
+    ],
+    "answer": "A",
+    "explanation": "Order: P1 0–2, P2 2–4, P3 4–5, P1 5–7, P2 7–8, P1 8–9. Completion: P1=9, P2=8, P3=5. Waiting = completion − burst: 4, 5, 4. Average = 13/3 ≈ 4.33 ms."
+  },
+  {
+    "id": 690,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Medium",
+    "question": "A long CPU-bound process holds the CPU while many short processes wait behind it, lowering CPU and device utilization. This is called the convoy effect and is most associated with:",
+    "options": [
+      "Pre-emptive priority scheduling",
+      "FCFS scheduling",
+      "Round Robin scheduling",
+      "Shortest Remaining Time First"
+    ],
+    "answer": "B",
+    "explanation": "In non-pre-emptive FCFS, one long job at the head of the queue delays all the short jobs behind it (the convoy effect)."
+  },
+  {
+    "id": 691,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Hard",
+    "question": "SRTF (pre-emptive SJF): P1 arrives at 0 with burst 7, P2 at 2 with burst 4, P3 at 4 with burst 1. What is the average waiting time?",
+    "options": [
+      "2.67 ms",
+      "1.00 ms",
+      "2.00 ms",
+      "3.00 ms"
+    ],
+    "answer": "C",
+    "explanation": "Timeline: P1 0–2, P2 2–4, P3 4–5, P2 5–7, P1 7–12. Waiting: P1 = 12−0−7 = 5, P2 = 7−2−4 = 1, P3 = 5−4−1 = 0. Average = 6/3 = 2.00 ms."
+  },
+  {
+    "id": 692,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Medium",
+    "question": "What is the key difference between a Multilevel Queue (MLQ) and a Multilevel Feedback Queue (MLFQ) scheduler?",
+    "options": [
+      "MLQ is always non-pre-emptive and MLFQ is always pre-emptive",
+      "MLQ allows moving between queues; MLFQ does not",
+      "MLFQ uses only one queue",
+      "In MLFQ a process can move between queues based on its behaviour; in MLQ it stays in its assigned queue"
+    ],
+    "answer": "D",
+    "explanation": "MLQ permanently assigns a process to a queue. MLFQ lets processes move (for example demoting CPU-hungry jobs and promoting long-waiting ones), which also helps prevent starvation."
+  },
+  {
+    "id": 693,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: CPU scheduling: FCFS, SJF, Round Robin, Priority",
+    "difficulty": "Medium",
+    "question": "FCFS scheduling: P1, P2, P3 arrive at time 0 in that order with bursts 6, 3 and 1 ms. What is the average waiting time?",
+    "options": [
+      "5 ms",
+      "6 ms",
+      "3.33 ms",
+      "4 ms"
+    ],
+    "answer": "A",
+    "explanation": "Waiting times are 0, 6 and 9. Average = (0 + 6 + 9)/3 = 5 ms."
+  },
+  {
+    "id": 694,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Deadlock and its four conditions",
+    "difficulty": "Hard",
+    "question": "12 tape drives are shared. Currently: P0 holds 5 (max 10), P1 holds 2 (max 4), P2 holds 2 (max 9), so 3 are free. Which is a safe sequence?",
+    "options": [
+      "<P2, P0, P1>",
+      "<P1, P0, P2>",
+      "<P0, P1, P2>",
+      "<P0, P2, P1>"
+    ],
+    "answer": "B",
+    "explanation": "P1 needs 2 ≤ 3 free, finishes and releases (free = 5). P0 needs 5 ≤ 5, finishes (free = 10). P2 needs 7 ≤ 10. Any sequence starting with P0 (needs 5) or P2 (needs 7) cannot proceed with only 3 free."
+  },
+  {
+    "id": 695,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Deadlock and its four conditions",
+    "difficulty": "Medium",
+    "question": "Requiring a process to request all the resources it needs before it begins execution prevents deadlock by breaking which condition?",
+    "options": [
+      "No pre-emption",
+      "Mutual exclusion",
+      "Hold and wait",
+      "Circular wait"
+    ],
+    "answer": "C",
+    "explanation": "If a process obtains everything at once, it never holds some resources while waiting for others, so hold-and-wait cannot occur (at the cost of low utilization and possible starvation)."
+  },
+  {
+    "id": 696,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Deadlock and its four conditions",
+    "difficulty": "Medium",
+    "question": "In a wait-for graph where every resource has a single instance, a cycle indicates:",
+    "options": [
+      "A safe state",
+      "That the processes will finish in the cycle order",
+      "Starvation only",
+      "A deadlock"
+    ],
+    "answer": "D",
+    "explanation": "With single-instance resources, a cycle in the wait-for graph is both necessary and sufficient for deadlock."
+  },
+  {
+    "id": 697,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Deadlock and its four conditions",
+    "difficulty": "Medium",
+    "question": "Which of the following is NOT one of the four necessary (Coffman) conditions for deadlock?",
+    "options": [
+      "Pre-emption of resources",
+      "Mutual exclusion",
+      "Circular wait",
+      "Hold and wait"
+    ],
+    "answer": "A",
+    "explanation": "The fourth condition is NO pre-emption. If resources can be pre-empted, deadlock can be broken; pre-emption itself is not a necessary condition."
+  },
+  {
+    "id": 698,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Classes, objects, constructors",
+    "difficulty": "Medium",
+    "question": "What does this print in Java?\nString s1 = \"hello\";\nString s2 = new String(\"hello\");\nSystem.out.println((s1 == s2) + \" \" + s1.equals(s2));",
+    "options": [
+      "true true",
+      "false true",
+      "true false",
+      "false false"
+    ],
+    "answer": "B",
+    "explanation": "== compares references; new String(...) creates a separate object, so it is false. equals() compares contents, so it is true."
+  },
+  {
+    "id": 699,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Exception handling and access modifiers",
+    "difficulty": "Hard",
+    "question": "What is the output?\nstatic int f() {\n  try { return 1; }\n  finally { System.out.println(\"F\"); }\n}\npublic static void main(String[] a) { System.out.println(f()); }",
+    "options": [
+      "1 then F",
+      "F only",
+      "F then 1 (on separate lines)",
+      "1 only"
+    ],
+    "answer": "C",
+    "explanation": "The finally block always runs before the method actually returns, so F is printed first and then main prints the returned value 1."
+  },
+  {
+    "id": 700,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Overloading vs overriding",
+    "difficulty": "Hard",
+    "question": "What is printed?\nclass A { static void show() { System.out.println(\"A\"); } }\nclass B extends A { static void show() { System.out.println(\"B\"); } }\nA obj = new B();\nobj.show();",
+    "options": [
+      "Compile-time error",
+      "Runtime error",
+      "B",
+      "A"
+    ],
+    "answer": "D",
+    "explanation": "Static methods are hidden, not overridden, and are resolved using the reference type (A), not the object type. So A.show() runs."
+  },
+  {
+    "id": 701,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Encapsulation, abstraction, inheritance and polymorphism",
+    "difficulty": "Medium",
+    "question": "What is printed when new B() is executed?\nclass A { A() { System.out.print(\"A\"); } }\nclass B extends A { B() { System.out.print(\"B\"); } }",
+    "options": [
+      "AB",
+      "A",
+      "BA",
+      "B"
+    ],
+    "answer": "A",
+    "explanation": "The subclass constructor implicitly calls super() first, so the parent constructor prints A before B's body prints B."
+  },
+  {
+    "id": 702,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Interfaces vs abstract classes",
+    "difficulty": "Medium",
+    "question": "What happens when you try to run: Shape s = new Shape(); where Shape is declared abstract?",
+    "options": [
+      "It compiles but s is null",
+      "Compile-time error because an abstract class cannot be instantiated",
+      "Runtime exception: AbstractMethodError",
+      "It compiles and runs, calling the default constructor"
+    ],
+    "answer": "B",
+    "explanation": "Abstract classes cannot be instantiated directly. You must instantiate a concrete subclass."
+  },
+  {
+    "id": 703,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Exception handling and access modifiers",
+    "difficulty": "Medium",
+    "question": "What is thrown?\nclass T { String s; void p() { System.out.println(s.length()); } }\nnew T().p();",
+    "options": [
+      "ArrayIndexOutOfBoundsException",
+      "Prints 0",
+      "NullPointerException",
+      "Compile-time error"
+    ],
+    "answer": "C",
+    "explanation": "Object fields default to null, so calling length() on the unassigned String s throws NullPointerException."
+  },
+  {
+    "id": 704,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Programming & OOP: Exception handling and access modifiers",
+    "difficulty": "Hard",
+    "question": "In Java, what happens?\nList<Integer> li = new ArrayList<>(List.of(1,2,3,4));\nfor (Integer x : li) { if (x == 2) li.remove(x); }",
+    "options": [
+      "The list becomes [1,3,4] with no error",
+      "Compile-time error",
+      "ArrayIndexOutOfBoundsException",
+      "ConcurrentModificationException"
+    ],
+    "answer": "D",
+    "explanation": "Structurally modifying a list while iterating with the enhanced for loop makes the iterator's next() detect the change and throw ConcurrentModificationException. Use Iterator.remove() or removeIf instead."
+  },
+  {
+    "id": 705,
+    "module": "Module 4 — Cloud Computing & DevOps",
+    "topic": "Scalability vs elasticity",
+    "difficulty": "Hard",
+    "question": "An e-commerce site uses an auto-scaling group but still slows down at the start of flash sales because new instances take several minutes to boot. What is the best fix?",
+    "options": [
+      "Use scheduled scaling or pre-warm capacity before the known peak",
+      "Move all traffic to one Availability Zone",
+      "Use a single larger instance and disable auto scaling",
+      "Increase the health-check interval"
+    ],
+    "answer": "A",
+    "explanation": "Reactive scaling lags behind sudden spikes. For predictable peaks, scheduled scaling or pre-provisioning avoids the boot delay. One large instance or one AZ reduces availability."
+  },
+  {
+    "id": 706,
+    "module": "Module 3 — Cybersecurity",
+    "topic": "Encryption vs hashing vs encoding",
+    "difficulty": "Hard",
+    "question": "A database breach is a risk. Which password-storage approach limits damage the most?",
+    "options": [
+      "Store an unsalted MD5 hash",
+      "Store a salted hash made with a slow algorithm such as bcrypt or Argon2",
+      "Store passwords Base64-encoded",
+      "Store passwords encrypted with a key kept in the same database"
+    ],
+    "answer": "B",
+    "explanation": "Salted slow hashes resist rainbow tables and brute force. Base64 is just encoding, reversible encryption with a co-located key is easily undone, and unsalted MD5 is fast to crack."
+  },
+  {
+    "id": 707,
+    "module": "Module 2 — Computer Networks",
+    "topic": "Network troubleshooting scenarios",
+    "difficulty": "Medium",
+    "question": "A user can ping a server by its IP address but cannot open it using its hostname. What is the most likely problem?",
+    "options": [
+      "Blocked port 25",
+      "Wrong default gateway",
+      "DNS resolution failure",
+      "Physical cable fault"
+    ],
+    "answer": "C",
+    "explanation": "Reaching the IP shows connectivity and routing work. Failure only by name points to DNS (wrong DNS server, missing record or cache issue)."
+  },
+  {
+    "id": 708,
+    "module": "Module 4 — Cloud Computing & DevOps",
+    "topic": "Shared responsibility model",
+    "difficulty": "Medium",
+    "question": "On an Amazon EC2 instance (IaaS), who is responsible for patching the guest operating system?",
+    "options": [
+      "The Internet service provider",
+      "Both equally, handled by AWS automatically",
+      "AWS",
+      "The customer"
+    ],
+    "answer": "D",
+    "explanation": "AWS secures the cloud (hardware, hypervisor, facilities). The customer is responsible for security in the cloud, including the guest OS, applications and data."
+  },
+  {
+    "id": 709,
+    "module": "Module 4 — Cloud Computing & DevOps",
+    "topic": "Docker images, containers, volumes and networks",
+    "difficulty": "Medium",
+    "question": "A database container's data disappears whenever the container is removed and re-created. Which is the correct fix?",
+    "options": [
+      "Mount a Docker volume for the data directory",
+      "Expose more ports",
+      "Increase the container's CPU limit",
+      "Use a larger base image"
+    ],
+    "answer": "A",
+    "explanation": "A container's writable layer is deleted with the container. Volumes live outside the container lifecycle and persist data."
+  },
+  {
+    "id": 710,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "DBMS & SQL: Constraints and NULL",
+    "difficulty": "Medium",
+    "question": "A table has 5 rows and column Phone contains NULL in 2 rows. What does SELECT COUNT(Phone) return?",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "0"
+    ],
+    "answer": "B",
+    "explanation": "COUNT(column) ignores NULLs, so it counts only the 3 non-NULL values. COUNT(*) would return 5."
+  },
+  {
+    "id": 711,
+    "module": "Module 5 — MS Office & Productivity Tools",
+    "topic": "Excel: VLOOKUP, HLOOKUP and XLOOKUP",
+    "difficulty": "Medium",
+    "question": "A VLOOKUP formula returns wrong values for an unsorted ID list. What is the most likely cause?",
+    "options": [
+      "The column index is zero-based",
+      "VLOOKUP cannot search text",
+      "The fourth argument was omitted or TRUE (approximate match) instead of FALSE",
+      "The lookup column must be the last column"
+    ],
+    "answer": "C",
+    "explanation": "VLOOKUP defaults to approximate match, which needs sorted data. Use FALSE (or 0) for exact match."
+  },
+  {
+    "id": 712,
+    "module": "Module 6 — Core Computer Science",
+    "topic": "Operating Systems: Mutex and semaphore",
+    "difficulty": "Medium",
+    "question": "Two threads increment a shared counter without any synchronization and the final value is sometimes lower than expected. What is this problem called, and what is the standard fix?",
+    "options": [
+      "A deadlock; add more threads",
+      "Thrashing; increase physical memory",
+      "Starvation; lower the priority of one thread",
+      "A race condition; protect the critical section with a mutex or semaphore"
+    ],
+    "answer": "D",
+    "explanation": "Unsynchronized read-modify-write on shared data causes a race condition. Guarding the critical section with a mutex (or binary semaphore) makes the update atomic."
   }
 ]
